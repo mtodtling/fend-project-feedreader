@@ -22,12 +22,12 @@ $(function() {
     });
 
 	describe('The menu', function() {
-		function getMenuState() {
-			return document.getElementsByTagName('BODY')[0].className;
+		function isMenuHidden() {
+			return document.getElementsByTagName('BODY')[0].classList.contains('menu-hidden');
 		}
 		
         it('is hidden by default', function() {
-			expect(getMenuState()).toBe('menu-hidden');
+			expect(isMenuHidden()).toBe(true);
         });
 
 		it('changes visibility when the menu icon is clicked', function() {	
@@ -36,10 +36,10 @@ $(function() {
 			}
 			
 			simulateMenuClick(); //simulates first click on menu button
-			expect(getMenuState()).toBe('');
+			expect(isMenuHidden()).toBe(false);
 
 			simulateMenuClick(); //simulates second click on menu button
-			expect(getMenuState()).toBe('menu-hidden');
+			expect(isMenuHidden()).toBe(true);
 		});
     });
 
